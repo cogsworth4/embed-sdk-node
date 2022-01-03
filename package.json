@@ -1,0 +1,22 @@
+{
+  "name": "embed-sdk-node",
+  "version": "1.0.0",
+  "description": "A server side SDK for interating Cogsworth's Embed Widget",
+  "main": "index.js",
+  "author": "Cogsworth <dev@cogsworth.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest --collect-coverage"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5"
+  }
+}
