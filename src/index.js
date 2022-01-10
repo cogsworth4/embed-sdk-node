@@ -15,6 +15,22 @@ export class Cogsworth {
     this.apiKey = apiKey;
   }
 
+  
+  /*
+  The following data is expected:
+  {
+    user: {
+      id: "xxxxx" // ID from partner system
+      email: "user@email.com",
+      name: "Dr. John Doe",
+      role: "OWNER" // One of the following: {OWNER, ADMIN, STAFF}
+    },
+    business: {
+      id: "xxxxx" // ID from partner system
+      name: "The Clinic"
+    }
+  }
+  */
   generateClientPayload({ user, business }) {
     validateClientPayload({ user, business });
 
