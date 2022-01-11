@@ -9,8 +9,13 @@ export function signatureFor({ apiKey, payload }) {
     throw new Error("apiKey is required");
   }
 
+  const data = {
+    ...payload,
+    timestamp: Date.now(),
+  };
+
   return crypto
     .createHmac("sha256", apiKey)
-    .update(JSON.stringify(payload))
+    .update(JSON.stringify(data))
     .digest("hex");
 }
