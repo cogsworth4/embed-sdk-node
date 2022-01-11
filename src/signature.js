@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-export function signatureFor({ apiKey, payload }) {
+export function signatureFor({ apiKey, payload, timestamp }) {
   if (!apiKey) {
     throw new Error("apiKey is required");
   }
@@ -11,7 +11,7 @@ export function signatureFor({ apiKey, payload }) {
 
   const data = {
     ...payload,
-    timestamp: Date.now(),
+    timestamp,
   };
 
   return crypto

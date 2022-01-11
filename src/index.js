@@ -34,15 +34,25 @@ export class Cogsworth {
   generateClientPayload({ user, business }) {
     validateClientPayload({ user, business });
 
+    const timestamp = Date.now();
     return {
       partnerId: this.partnerId,
+      timestamp,
       user: {
         ...user,
-        signature: signatureFor({ apiKey: this.apiKey, payload: user }),
+        signature: signatureFor({
+          apiKey: this.apiKey,
+          payload: user,
+          timestamp,
+        }),
       },
       business: {
         ...business,
-        signature: signatureFor({ apiKey: this.apiKey, payload: business }),
+        signature: signatureFor({
+          apiKey: this.apiKey,
+          payload: business,
+          timestamp,
+        }),
       },
     };
   }
