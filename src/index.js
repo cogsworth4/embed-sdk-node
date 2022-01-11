@@ -15,7 +15,6 @@ export class Cogsworth {
     this.apiKey = apiKey;
   }
 
-  
   /*
   The following data is expected:
   {
@@ -26,8 +25,9 @@ export class Cogsworth {
       role: "OWNER" // One of the following: {OWNER, ADMIN, STAFF}
     },
     business: {
-      id: "xxxxx" // ID from partner system
-      name: "The Clinic"
+      id: "xxxxx", // ID from partner system
+      name: "The Clinic",
+      timezone: "Australia/Sydney"
     }
   }
   */

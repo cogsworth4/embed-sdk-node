@@ -1,4 +1,4 @@
-const VALID_ROLES = ['USER', 'ADMIN', 'STAFF']
+const VALID_ROLES = ["USER", "ADMIN", "STAFF"];
 
 export function validateClientPayload({ user, business }) {
   if (!user) {
@@ -14,10 +14,12 @@ export function validateClientPayload({ user, business }) {
   }
   if (VALID_ROLES.indexOf(user.role) === -1) {
     throw new Error(
-      `user payload must contain the role property, with one of the following values: ${VALID_ROLES.join(', ')}`
+      `user payload must contain the role property, with one of the following values: ${VALID_ROLES.join(
+        ", "
+      )}`
     );
   }
-  if (!business.id || !business.name) {
+  if (!business.id || !business.name || !business.timezone) {
     throw new Error(
       "business payload must contain the following properties: id, name"
     );
