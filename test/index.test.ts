@@ -1,10 +1,10 @@
 import { expect } from "@jest/globals";
-import { Cogsworth } from "../src/index";
+import CogsworthSDK from "../src/index";
 
 describe("Cogsworth", () => {
   describe("constructor", () => {
     it("class can be instantiated", () => {
-      const cogsworth = new Cogsworth({
+      const cogsworth = new CogsworthSDK({
         partnerId: "partner-1",
         apiKey: "partner-key",
       });
@@ -15,31 +15,35 @@ describe("Cogsworth", () => {
 
     it("throws an error when api key is not provided", () => {
       expect(() => {
-        new Cogsworth({
+        new CogsworthSDK({
           partnerId: "partner-1",
-        });
+        } as any);
       }).toThrow();
     });
 
     it("throws an error when parner id is not provided", () => {
       expect(() => {
-        new Cogsworth({
+        new CogsworthSDK({
           apiKey: "partner-key",
-        });
+        } as any);
       }).toThrow();
     });
   });
 
   describe("generateClientPayload", () => {
     it("returns the payload including the generated signatures", () => {
-      const cogsworth = new Cogsworth({
+      const cogsworth = new CogsworthSDK({
         partnerId: "partner-1",
         apiKey: "partner-key",
       });
 
       const payload = cogsworth.generateClientPayload({
-        user: { id: "user-1", name: "Dr John", email: "john@company.com" },
-        business: { id: "business-1", name: "Clinic" },
+        user: {
+          id: "user-1",
+          name: "Dr John",
+          email: "john@company.com",
+        } as any,
+        business: { id: "business-1", name: "Clinic" } as any,
       });
       expect(payload).toEqual({
         partnerId: "partner-1",
@@ -57,46 +61,55 @@ describe("Cogsworth", () => {
     });
 
     it("throws an error if user or business payload is missing", () => {
-      const cogsworth = new Cogsworth({
+      const cogsworth = new CogsworthSDK({
         partnerId: "partner-1",
         apiKey: "partner-key",
       });
 
       expect(() => {
-        cogsworth.generateClientPayload();
+        const data = {} as any;
+        cogsworth.generateClientPayload(data);
       }).toThrow();
 
       expect(() => {
-        cogsworth.generateClientPayload({
-          user: { id: "user-1", name: "Dr John", email: "john@company.com" },
-        });
+        const data = {
+          user: {
+            id: "user-1",
+            name: "Dr John",
+            email: "john@company.com",
+          } as any,
+        } as any;
+        cogsworth.generateClientPayload(data);
       }).toThrow();
 
       expect(() => {
-        cogsworth.generateClientPayload({
+        const data = {
           business: { id: "business-1", name: "Clinic" },
-        });
+        } as any;
+        cogsworth.generateClientPayload(data);
       }).toThrow();
     });
 
     it("throws an error if user or business payload is incomplete", () => {
-      const cogsworth = new Cogsworth({
+      const cogsworth = new CogsworthSDK({
         partnerId: "partner-1",
         apiKey: "partner-key",
       });
 
       expect(() => {
-        cogsworth.generateClientPayload({
+        const data = {
           user: { id: "user-1", name: "Dr John" },
           business: { id: "business-1", name: "Clinic" },
-        });
+        } as any;
+        cogsworth.generateClientPayload(data);
       }).toThrow();
 
       expect(() => {
-        cogsworth.generateClientPayload({
+        const data = {
           user: { id: "user-1", name: "Dr John" },
           business: { id: "business-1" },
-        });
+        } as any;
+        cogsworth.generateClientPayload(data);
       }).toThrow();
     });
   });

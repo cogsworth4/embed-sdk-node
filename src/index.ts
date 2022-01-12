@@ -1,8 +1,12 @@
 import { signatureFor } from "./signature";
+import { Input, Payload } from "./types";
 import { validateClientPayload } from "./validation";
 
-export class Cogsworth {
-  constructor({ partnerId, apiKey }) {
+export default class CogsworthSDK {
+  partnerId: string;
+  apiKey: string;
+
+  constructor({ partnerId, apiKey }: { partnerId: string; apiKey: string }) {
     if (!partnerId) {
       throw new Error("partnerId is required");
     }
@@ -15,42 +19,26 @@ export class Cogsworth {
     this.apiKey = apiKey;
   }
 
-  /*
-  The following data is expected:
-  {
-    user: {
-      id: "xxxxx" // ID from partner system
-      email: "user@email.com",
-      name: "Dr. John Doe",
-      role: "OWNER" // One of the following: {OWNER, ADMIN, STAFF}
-    },
-    business: {
-      id: "xxxxx", // ID from partner system
-      name: "The Clinic",
-      timezone: "Australia/Sydney"
-    }
-  }
-  */
-  generateClientPayload({ user, business }) {
-    validateClientPayload({ user, business });
+  generateClientPayload(data: Input): Payload {
+    validateClientPayload(data);
 
     const timestamp = Date.now();
     return {
       partnerId: this.partnerId,
       timestamp,
       user: {
-        ...user,
+        ...data.user,
         signature: signatureFor({
           apiKey: this.apiKey,
-          payload: user,
+          payload: data.user,
           timestamp,
         }),
       },
       business: {
-        ...business,
+        ...data.business,
         signature: signatureFor({
           apiKey: this.apiKey,
-          payload: business,
+          payload: data.business,
           timestamp,
         }),
       },

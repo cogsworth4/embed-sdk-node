@@ -1,3 +1,4 @@
+import { expect } from "@jest/globals";
 import { signatureFor } from "../src/signature";
 
 describe("signatureFor", () => {
@@ -5,6 +6,7 @@ describe("signatureFor", () => {
     const signature = signatureFor({
       apiKey: "api-key-1",
       payload: { id: "user-1" },
+      timestamp: 1642017657687,
     });
 
     expect(signature).toEqual(
@@ -16,11 +18,13 @@ describe("signatureFor", () => {
     const signature1 = signatureFor({
       apiKey: "api-key-1",
       payload: { id: "user-1" },
+      timestamp: 1642017657687,
     });
 
     const signature2 = signatureFor({
       apiKey: "api-key-2",
       payload: { id: "user-1" },
+      timestamp: 1642017657687,
     });
 
     expect(signature1 === signature2).toBeFalsy();
@@ -30,11 +34,13 @@ describe("signatureFor", () => {
     const signature1 = signatureFor({
       apiKey: "api-key-1",
       payload: { id: "user-1" },
+      timestamp: 1642017657687,
     });
 
     const signature2 = signatureFor({
       apiKey: "api-key-1",
       payload: { id: "user-1" },
+      timestamp: 1642017657687,
     });
 
     expect(signature1 === signature2).toBeTruthy();
@@ -44,7 +50,8 @@ describe("signatureFor", () => {
     expect(() => {
       signatureFor({
         payload: { id: "user-1" },
-      });
+        timestamp: 1642017657687,
+      } as any);
     }).toThrow();
   });
 
@@ -52,7 +59,17 @@ describe("signatureFor", () => {
     expect(() => {
       signatureFor({
         apiKey: "api-key-1",
-      });
+        timestamp: 1642017657687,
+      } as any);
+    }).toThrow();
+  });
+
+  it("throws an error if timestamp is not provided", () => {
+    expect(() => {
+      signatureFor({
+        apiKey: "api-key-1",
+        payload: { id: "user-1" },
+      } as any);
     }).toThrow();
   });
 });

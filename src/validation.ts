@@ -1,6 +1,8 @@
+import { Input } from "./types";
+
 const VALID_ROLES = ["USER", "ADMIN", "STAFF"];
 
-export function validateClientPayload({ user, business }) {
+export function validateClientPayload({ user, business }: Input) {
   if (!user) {
     throw new Error("user payload is required");
   }
