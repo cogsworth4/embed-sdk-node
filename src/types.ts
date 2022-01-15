@@ -2,13 +2,13 @@ interface UserInput {
   id: string; // ID from partner system
   email: string;
   name: string;
-  role: "OWNER" | "ADMIN" | "MEMBER";
 }
 
 interface BusinessInput {
   id: string; // ID from partner system
   name: string;
   timezone: string;
+  userRole: "OWNER" | "ADMIN" | "MEMBER";
 }
 
 export interface Input {

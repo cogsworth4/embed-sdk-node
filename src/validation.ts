@@ -14,9 +14,9 @@ export function validateClientPayload({ user, business }: Input) {
       "user payload must contain the following properties: id, email, name"
     );
   }
-  if (VALID_ROLES.indexOf(user.role) === -1) {
+  if (VALID_ROLES.indexOf(business.userRole) === -1) {
     throw new Error(
-      `user payload must contain the role property, with one of the following values: ${VALID_ROLES.join(
+      `business payload must contain the userRole property, with one of the following values: ${VALID_ROLES.join(
         ", "
       )}`
     );
