@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateClientPayload = void 0;
-const VALID_ROLES = ["USER", "ADMIN", "STAFF"];
+const VALID_ROLES = ["OWNER", "ADMIN", "STAFF"];
 function validateClientPayload({ user, business }) {
     if (!user) {
         throw new Error("user payload is required");
