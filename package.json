@@ -2,7 +2,7 @@
   "name": "embed-sdk-node",
   "version": "1.0.0",
   "description": "A server side SDK for interating Cogsworth's Embed Widget",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "author": "Cogsworth <dev@cogsworth.com>",
   "license": "MIT",
   "scripts": {
