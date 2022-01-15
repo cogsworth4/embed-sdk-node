@@ -1,6 +1,6 @@
 import { Input } from "./types";
 
-const VALID_ROLES = ["USER", "ADMIN", "STAFF"];
+const VALID_ROLES = ["OWNER", "ADMIN", "STAFF"];
 
 export function validateClientPayload({ user, business }: Input) {
   if (!user) {
