@@ -8,7 +8,7 @@ interface BusinessInput {
   id: string; // ID from partner system
   name: string;
   timezone: string;
-  userRole: "OWNER" | "ADMIN" | "MEMBER";
+  userRole: "OWNER" | "ADMIN" | "STAFF";
 }
 
 export interface Input {
