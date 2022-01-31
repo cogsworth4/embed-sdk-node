@@ -43,6 +43,26 @@ const payload = cogsworth.generateClientPayload({
 });
 ```
 
+### Payload data
+
+The payload needs to contain a `user` and a `business` objects, which require the following details:
+
+**User**
+
+- `user.id` - A unique identifier for the user in your system
+- `user.email` - Emails are unique for each user
+- `user.name` - The user name
+
+**Business**
+
+- `business.id` - A unique identifier for the user in your system
+- `business.name` - The business name
+- `business.timezone` - See a [List of possible timezones](https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a).
+- `business.userRole` - The role for the provided user in this business. Can be one of the following:
+  - `"OWNER"`: The business owner. Has full access to the business. Cogsworth can provision new businesses for owners only.
+  - `"ADMIN"`: The business owner. Has full access to the business.
+  - `"STAFF"`: Has limited access. Cannot change business settings and can only see their own appointments.
+
 ## Full example
 
 ```javascript
