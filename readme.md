@@ -39,6 +39,7 @@ const payload = cogsworth.generateClientPayload({
     name: "Example Business",
     timezone: "Sydney/Australia",
     userRole: "OWNER",
+    location: "https://partner.com/room/xxxxxxxx",
   },
 });
 ```
@@ -62,6 +63,7 @@ The payload needs to contain a `user` and a `business` objects, which require th
   - `"OWNER"`: The business owner. Has full access to the business. Cogsworth can provision new businesses for owners only.
   - `"ADMIN"`: The business owner. Has full access to the business.
   - `"STAFF"`: Has limited access. Cannot change business settings and can only see their own appointments.
+- `business.location` -Optional- The default location for the business appointments. If the value starts with *https*, it will be detected as a URL.
 
 ## Full example
 
@@ -82,7 +84,8 @@ const handler = (req, res) => {
       id: "xxxxxxxx",
       name: "Example Business",
       timezone: "Sydney/Australia",
-      userRole: "OWNER"
+      userRole: "OWNER",
+      location: "https://www.partner.com/room/xxxxxxxx",
   });
 
   res.send(clientPayload);

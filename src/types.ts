@@ -9,6 +9,7 @@ interface BusinessInput {
   name: string;
   timezone: string;
   userRole: "OWNER" | "ADMIN" | "STAFF";
+  location?: string;
 }
 
 export interface Input {
