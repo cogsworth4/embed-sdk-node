@@ -5,10 +5,10 @@ const validation_1 = require("./validation");
 class CogsworthSDK {
     constructor({ partnerId, apiKey }) {
         if (!partnerId) {
-            throw new Error("partnerId is required");
+            throw new Error('partnerId is required');
         }
         if (!apiKey) {
-            throw new Error("apiKey is required");
+            throw new Error('apiKey is required');
         }
         this.partnerId = partnerId;
         this.apiKey = apiKey;
