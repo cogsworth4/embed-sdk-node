@@ -1,9 +1,9 @@
-import { Input, Payload } from "./src/types";
+import { Input, Payload } from './src/types'
 
-export = CogsworthSDK;
+export = CogsworthSDK
 
 declare class CogsworthSDK {
-  constructor({ partnerId, apiKey }: { partnerId: string; apiKey: string });
+  constructor({ partnerId, apiKey }: { partnerId: string; apiKey: string })
 
-  generateClientPayload(data: Input): Payload;
+  generateClientPayload(data: Input): Payload
 }

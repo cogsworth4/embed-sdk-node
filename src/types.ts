@@ -1,29 +1,29 @@
 interface UserInput {
-  id: string; // ID from partner system
-  email: string;
-  name: string;
+  id: string // ID from partner system
+  email: string
+  name: string
 }
 
 interface BusinessInput {
-  id: string; // ID from partner system
-  name: string;
-  timezone: string;
-  userRole: "OWNER" | "ADMIN" | "STAFF";
-  location?: string;
+  id: string // ID from partner system
+  name: string
+  timezone: string
+  userRole: 'OWNER' | 'ADMIN' | 'STAFF'
+  location?: string
 }
 
 export interface Input {
-  user: UserInput;
-  business: BusinessInput;
+  user: UserInput
+  business: BusinessInput
 }
 
 type Signed<T> = T & {
-  signature: string;
-};
+  signature: string
+}
 
 export interface Payload {
-  partnerId: string;
-  timestamp: number;
-  user: Signed<UserInput>;
-  business: Signed<BusinessInput>;
+  partnerId: string
+  timestamp: number
+  user: Signed<UserInput>
+  business: Signed<BusinessInput>
 }
