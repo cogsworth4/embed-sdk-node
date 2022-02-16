@@ -1,6 +1,14 @@
 import crypto from 'crypto'
 
-export function signatureFor({ apiKey, payload, timestamp }) {
+export const signatureFor = ({
+  apiKey,
+  payload,
+  timestamp,
+}: {
+  apiKey: string
+  payload: any
+  timestamp: number
+}) => {
   if (!apiKey) {
     throw new Error('apiKey is required')
   }
@@ -24,7 +32,7 @@ export function signatureFor({ apiKey, payload, timestamp }) {
 const sortedKeys = (obj: any) => {
   return Object.keys(obj)
     .sort()
-    .reduce(function (acc: any, key) {
+    .reduce((acc: any, key) => {
       acc[key] = obj[key]
       return acc
     }, {})
