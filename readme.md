@@ -5,9 +5,9 @@ The Cogsworth Embed App SDK allows Cogsworth partners to embed the Cogsworth Emb
 ## Installation
 
 ```bash
-npm install @cogsworth4/embed-sdk-node
+npm install @cogsworthdev/embed-sdk-node
 # or
-yarn add @cogsworth4/embed-sdk-node
+yarn add @cogsworthdev/embed-sdk-node
 ```
 
 ## Usage
@@ -17,12 +17,12 @@ In order to securely generate a signed payload, it is required that you set up a
 The package needs to be configured with your Cogsworth account ID and API key, which you can find in your [Cogsworh Dashboard](https://www.cogsworth.com/account/):
 
 ```javascript
-import CogsworthSDK from "@cogsworth4/embed-sdk-node";
+import CogsworthSDK from '@cogsworth4/embed-sdk-node'
 
 const cogsworth = new CogsworthSDK({
-  partnerId: "xxxxx",
-  apiKey: "xxxxxx",
-});
+  partnerId: 'xxxxx',
+  apiKey: 'xxxxxx',
+})
 ```
 
 You can then use the SDK to generate a secure payload:
@@ -30,18 +30,18 @@ You can then use the SDK to generate a secure payload:
 ```javascript
 const payload = cogsworth.generateClientPayload({
   user: {
-    id: "xxxxxxxx",
-    email: "user@example.com",
-    name: "Dr. Test User",
+    id: 'xxxxxxxx',
+    email: 'user@example.com',
+    name: 'Dr. Test User',
   },
   business: {
-    id: "xxxxxxxx",
-    name: "Example Business",
-    timezone: "Sydney/Australia",
-    userRole: "OWNER",
-    location: "https://partner.com/room/xxxxxxxx",
+    id: 'xxxxxxxx',
+    name: 'Example Business',
+    timezone: 'Sydney/Australia',
+    userRole: 'OWNER',
+    location: 'https://partner.com/room/xxxxxxxx',
   },
-});
+})
 ```
 
 ### Payload data
@@ -63,7 +63,7 @@ The payload needs to contain a `user` and a `business` objects, which require th
   - `"OWNER"`: The business owner. Has full access to the business. Cogsworth can provision new businesses for owners only.
   - `"ADMIN"`: The business owner. Has full access to the business.
   - `"STAFF"`: Has limited access. Cannot change business settings and can only see their own appointments.
-- `business.location` -Optional- The default location for the business appointments. If the value starts with *https*, it will be detected as a URL.
+- `business.location` -Optional- The default location for the business appointments. If the value starts with _https_, it will be detected as a URL.
 
 ## Full example
 
